@@ -23,7 +23,7 @@ pipeline {
                 
                 sh("eksctl create cluster --name $CLUSTER_NAME --region $REGION  || true")
                 sh ("eksctl create nodegroup --cluster=$CLUSTER_NAME --name=$CLUSTER_NAME-nodes || true")
-                sh("eksctl create iamidentitymapping --cluster  $CLUSTER_NAME --region=$REGION --arn arn:aws:iam::$ACCOUNT_NUMBER:user/$USER_NAME --group system:masters --username $USER_NAME")
+                sh("eksctl create iamidentitymapping --cluster  $CLUSTER_NAME --region=$REGION --arn arn:aws:iam::$ACCOUNT_NUMBER:user/$USER_NAME --group system:masters --username $USER_NAME || true")
                 sh("aws eks update-kubeconfig --name $CLUSTER_NAME --region=$REGION")
                 sh ("sudo sed -i 's/v1alpha1/v1beta1/g' /var/lib/jenkins/.kube/config")
                
