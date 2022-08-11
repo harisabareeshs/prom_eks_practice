@@ -3,7 +3,7 @@ pipeline {
 
      parameters {
     string(name: 'CLUSTER_NAME', defaultValue: 'elliott-eks-fargate-deux')
-    string(name: 'ACCOUNT_NUMBER', defaultValue: '780988366548')
+    string(name: 'ACCOUNT_NUMBER', defaultValue: '8675309')
     string(name: 'USER_NAME', defaultValue: 'kratos')
     string(name: 'REGION', defaultValue: 'us-east-1')
   }
@@ -53,3 +53,9 @@ pipeline {
       
     }
 }
+
+// kubectl expose service prometheus-grfana-grafana --type=NodePort --target-port=3000 -n prometheus --name=grafana-ext
+// service/grafana-ext exposed
+
+// kubectl  get  secret prometheus-grfana-grafana   -n prometheus -o yaml
+//  echo 'cHJvbS1vcGVyYXRvcg==' | base64 --decode
